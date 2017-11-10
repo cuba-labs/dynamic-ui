@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.sample.web.test.TestBrowse"
+        focusComponent="testsTable"
+        lookupComponent="testsTable"
+        messagesPack="com.company.sample.web.test">
+    <dsContext>
+        <groupDatasource id="testsDs"
+                         class="com.company.sample.entity.Test"
+                         view="_local">
+            <query>
+                <![CDATA[select e from sample$Test e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="testsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="testsTable"
+                datasource="testsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="testsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="field"/>
+                <column id="field1"/>
+                <column id="field2"/>
+                <column id="field3"/>
+            </columns>
+            <rows datasource="testsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="testsTable.create"/>
+                <button id="editBtn"
+                        action="testsTable.edit"/>
+                <button id="removeBtn"
+                        action="testsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>
